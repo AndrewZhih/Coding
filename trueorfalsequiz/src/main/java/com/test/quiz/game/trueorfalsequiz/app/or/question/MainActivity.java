@@ -2,7 +2,9 @@ package com.test.quiz.game.trueorfalsequiz.app.or.question;
 
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.CountDownTimer;
@@ -26,7 +28,9 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final String LOG_TAG = "myLogs";
+    private final String LOG_TAG = "myLogs";
+    public final String PREFS_KEY = "PREFS_KEY";
+    public final String BEST_RESULT = "BEST_RESULT";
 
     private ImageButton mTrueButton;
     private ImageButton mFalseButton;
@@ -71,10 +75,20 @@ public class MainActivity extends AppCompatActivity {
             currentResult++;
             countTextView.setText(String.valueOf(currentResult));
         } else {
+            if(currentResult >= bestResult) {
+                bestResult = currentResult;
+                SharedPreferences resultPrefs = this.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = resultPrefs.edit();
+                editor.putInt(BEST_RESULT, bestResult);
+                editor.commit();
+            }
+
             Log.d(LOG_TAG, "myTask cancel in if/else");
             myTask.cancel();
             soundPool.play(soundIdWrong, 1, 1, 0, 0, 1);
             Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra("BEST_RESULT", bestResult);
+            intent.putExtra("CURRENT_RESULT", currentResult);
             startActivity(intent);
             finish();
         }
@@ -86,6 +100,54 @@ public class MainActivity extends AppCompatActivity {
             new Question(R.string.question_africa, false),
             new Question(R.string.question_americas, true),
             new Question(R.string.question_asia, true),
+            new Question(R.string.question_lighting, false),
+            new Question(R.string.question_cry, true),
+            new Question(R.string.question_earthworm, false),
+            new Question(R.string.question_smells, true),
+            new Question(R.string.question_bones, true),
+            new Question(R.string.question_napoleon, false),
+            new Question(R.string.question_goldfish, false),
+            new Question(R.string.question_cells, true),
+            new Question(R.string.question_hair, false),
+            new Question(R.string.question_mint, true),
+            new Question(R.string.question_twinkies, false),
+            new Question(R.string.question_humans, true),
+            new Question(R.string.question_santa, false),
+            new Question(R.string.question_alcohol, false),
+            new Question(R.string.question_segway, true),
+            new Question(R.string.question_atom_age, true),
+            new Question(R.string.question_whales, true),
+            new Question(R.string.question_gold, true),
+            new Question(R.string.question_atlantic, false),
+            new Question(R.string.question_kelvin, true),
+            new Question(R.string.question_sun, true),
+            new Question(R.string.question_slug, true),
+            new Question(R.string.question_great_wall, false),
+            new Question(R.string.question_casino, true),
+            new Question(R.string.question_surface, true),
+            new Question(R.string.question_underwater, true),
+            new Question(R.string.question_rubik, false),
+            new Question(R.string.question_paul, false),
+            new Question(R.string.question_jupiter, true),
+            new Question(R.string.question_garlic, true),
+            new Question(R.string.question_donald, true),
+            new Question(R.string.question_black_box, false),
+            new Question(R.string.question_crow, true),
+            new Question(R.string.question_king, false),
+            new Question(R.string.question_aztec, true),
+            new Question(R.string.question_fax, true),
+            new Question(R.string.question_coffee, true),
+            new Question(R.string.question_wombat, false),
+            new Question(R.string.question_oreo, true),
+            new Question(R.string.question_unicorn, true),
+            new Question(R.string.question_lincoln, false),
+            new Question(R.string.question_termites, true),
+            new Question(R.string.question_cows, false),
+            new Question(R.string.question_earth, true),
+            new Question(R.string.question_banana, false),
+            new Question(R.string.question_octopus, false),
+            new Question(R.string.question_moon, true),
+            new Question(R.string.question_stars, true),
     };
 
 
@@ -94,6 +156,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences resultPrefs = this.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
+        bestResult = resultPrefs.getInt(BEST_RESULT, 0);
+        Log.d(LOG_TAG, "Get best result " + bestResult);
 
 
         mTrueButton  = (ImageButton) findViewById(R.id.true_button );
@@ -168,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
     private class MyTask extends TimerTask{
         @Override
         public void run() {
-            Log.d(LOG_TAG, "RUN in MyTask class");
+            //Log.d(LOG_TAG, "RUN in MyTask class");
             --progress;
             if(progress >= 0){
                 progressBar.setProgress(progress);

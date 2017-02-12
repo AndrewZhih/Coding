@@ -2,9 +2,11 @@
     <string name="app_name">True Or False</string>
 
     <string name="true_button">True</string>
+
     <string name="false_button">False</string>
 
-    <string name="question_text"> Constantinople is the largest city in Turkey.</string>
+    <string name="question_text"> Constantinople is the largest 
+        city in Turkey.</string>
 
     <string name="question_oceans">The Pacific Ocean is larger than
         the Atlantic Ocean.
@@ -14,10 +16,152 @@
         and the Indian Ocean.
     </string>
 
-    <string name="question_africa">The source of the Nile River is in Egypt.</string>
+    <string name="question_africa">The source of the Nile 
+        River is in Egypt.</string>
 
-    <string name="question_americas">The Amazon River is the longest river in the Americas.</string>
+    <string name="question_americas">The Amazon River is the 
+        longest river in the Americas.</string>
 
-    <string name="question_asia">Lake Baikal is the world\’s oldest and deepest freshwater lake.</string>
+    <string name="question_asia">Lake Baikal is the world\’s
+        oldest and deepest freshwater lake.</string>
+    
+    <string name="question_lighting">Lightning never strikes in the
+        same place twice.</string>
 
+    <string name="question_cry">If you cry in space the tears just
+        stick to your face. </string>
+
+    <string name="question_earthworm">If you cut an earthworm in half, both
+        halves can regrow their body.</string>
+
+    <string name="question_smells">Humans can distinguish between over a trillion
+        different smells. </string>
+
+    <string name="question_bones">Adults have fewer bones than
+        babies do.</string>
+
+    <string name="question_napoleon">Napoleon Bonaparte was
+        extremely short.</string>
+
+    <string name="question_goldfish">Goldfish only have a memory of
+        three seconds.</string>
+
+    <string name="question_cells">There are more cells of bacteria in your body than
+        there are human cells.</string>
+
+    <string name="question_hair">Your fingernails and hair keep g
+        rowing after you die.</string>
+
+    <string name="question_mint"> It costs the U.S. Mint more to make pennies and
+        nickels than the coins are actually worth.</string>
+
+    <string name="question_twinkies">Twinkies have an infinite
+        shelf life.</string>
+
+    <string name="question_humans">Humans can’t breathe and swallow at the
+        same time.</string>
+
+    <string name="question_santa">The popular image of Santa Claus – chubby, bearded,
+        in red and white clothes – was invented
+        by Coca-Cola for an ad campaign.</string>
+
+    <string name="question_alcohol">Drinking alcohol kills brain
+        cells.</string>
+
+    <string name="question_segway">The owner of the company that makes Segways died after accidentally
+        driving his Segway off a cliff.</string>
+
+    <string name="question_atom_age">Every atom in your body is billions
+        of years old.</string>
+
+    <string name="question_whales">Beaked whales can hold their breath for
+        over two hours.</string>
+
+    <string name="question_gold">The world’s oceans contain 20 million
+        tons of gold.</string>
+
+    <string name="question_atlantic">The Atlantic Ocean is the biggest ocean on
+        Earth.</string>
+
+    <string name="question_kelvin">Kelvin is a measure of temperature.</string>
+
+    <string name="question_sun">The most massive object in the Solar System
+        is the Sun.</string>
+
+    <string name="question_slug">A slug’s blood is green.</string>
+
+    <string name="question_great_wall">The Great Wall Of China is visible from the
+        moon.</string>
+
+    <string name="question_casino">Virtually all Las Vegas gambling casinos ensure that
+        they have no clocks.</string>
+
+    <string name="question_surface">The total surface area of two human lungs have a surface
+        area of approximately 70 square metres.</string>
+
+    <string name="question_underwater"> The longest distance swam underwater in
+        one breath is 200metres. </string>
+
+    <string name="question_rubik">The record for the fastest time to solve a Rubik’s
+        Cube one-handed is 37 seconds. </string>
+
+    <string name="question_paul">Sir Paul McCartney’s middle name is
+        James.</string>
+
+    <string name="question_jupiter">Jupiter is the fifth planet from the
+        sun.</string>
+
+    <string name="question_garlic">Alliumphobia is a fear of garlic
+        .</string>
+
+    <string name="question_donald">‘Fauntleroy’ is the middle name of Donald
+        Duck.</string>
+
+    <string name="question_black_box">The ‘black box’ in an aeroplane is
+        black.</string>
+
+    <string name="question_crow"> Brandon Lee died during filming for ‘The Crow’ in 1994 after an accident with a prop
+        gun during a shooting scene. </string>
+
+    <string name="question_king">Stephen King’s ‘The Shining’ was originally
+        called ‘Halloween Hotel’.</string>
+
+
+    <string name="question_aztec">Oxford university has been around longer than
+        the aztec empire. </string>
+
+    <string name="question_fax">The fax machine was patented in 1843.</string>
+
+    <string name="question_coffee">The darker the coffee roast, the less
+        caffeine it contains.</string>
+
+    <string name="question_wombat">The first game of baseball
+        was played with a dried and stitched head of a wombat, rather than a ball.</string>
+
+    <string name="question_oreo">Oreo cookies predate chocolate
+        chip cookies by over 25 years.</string>
+
+    <string name="question_unicorn">The national animal of Scotland
+        is the unicorn.</string>
+
+    <string name="question_lincoln">Abraham Lincoln and Albert Einstein were alive at the
+        same time. Their lives overlapped by 14 years.</string>
+
+    <string name="question_termites">The total weight of termites on Earth is
+        much heavier than the total weight of humans on Earth.</string>
+
+    <string name="question_cows">The total weight of all the humans is actually
+        heavier than the total weight of all the cows on Earth</string>
+
+    <string name="question_earth">Earth is closest to the Sun in January.</string>
+
+    <string name="question_banana">Humans share 90% their DNA with bananas.</string>
+
+    <string name="question_octopus">An octopus has two hearts.</string>
+
+    <string name="question_moon">If ypu could fold a piece of paper
+        42 times, it would reach to the moon.</string>
+
+    <string name="question_stars">There are more stars in the universe
+        than there are grains of sand on all the world`s beaches.</string>
 </resources>

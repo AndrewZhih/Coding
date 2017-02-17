@@ -22,6 +22,7 @@ public class ResultActivity extends AppCompatActivity {
     private TextView scoreTV;
     private TextView bestResultTV;
     private TextView currentResultTV;
+    private TextView helpTV;
     private int currentResult;
     private int bestResult;
 
@@ -32,15 +33,19 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         Animation animationScale = AnimationUtils.loadAnimation(this, R.anim.result_scale);
+        Animation animationScaleHelp = AnimationUtils.loadAnimation(this, R.anim.help_scale);
 
         negativeBtn = (Button)findViewById(R.id.negativeBtn);
         positiveBtn = (Button)findViewById(R.id.positiveBtn);
 
+        //helpTV = (TextView)findViewById(R.id.helpTV);
         resOneTV = (TextView)findViewById(R.id.resOneTV);
         scoreTV = (TextView)findViewById(R.id.scoreTV);
         bestResultTV = (TextView)findViewById(R.id.bestResultTV);
         currentResultTV = (TextView)findViewById(R.id.currentResultTV);
 
+        //animationScaleHelp.setRepeatCount(Animation.INFINITE);
+        //helpTV.startAnimation(animationScaleHelp);
         scoreTV.startAnimation(animationScale);
 
 

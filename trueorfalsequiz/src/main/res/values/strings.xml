@@ -4,8 +4,10 @@
     <string name="true_button">True</string>
 
     <string name="false_button">False</string>
+    
+    <string name="progress"> %1$d of %2$d</string>
 
-    <string name="question_text"> Constantinople is the largest 
+    <string name="question_text"> Constantinople is the largest
         city in Turkey.</string>
 
     <string name="question_oceans">The Pacific Ocean is larger than
@@ -16,15 +18,15 @@
         and the Indian Ocean.
     </string>
 
-    <string name="question_africa">The source of the Nile 
+    <string name="question_africa">The source of the Nile
         River is in Egypt.</string>
 
-    <string name="question_americas">The Amazon River is the 
+    <string name="question_americas">The Amazon River is the
         longest river in the Americas.</string>
 
     <string name="question_asia">Lake Baikal is the world\’s
         oldest and deepest freshwater lake.</string>
-    
+
     <string name="question_lighting">Lightning never strikes in the
         same place twice.</string>
 
@@ -159,9 +161,28 @@
 
     <string name="question_octopus">An octopus has two hearts.</string>
 
-    <string name="question_moon">If ypu could fold a piece of paper
+    <string name="question_moon">If you could fold a piece of paper
         42 times, it would reach to the moon.</string>
 
     <string name="question_stars">There are more stars in the universe
         than there are grains of sand on all the world`s beaches.</string>
+
+    <string name="question_armstrong">Neil Armstrong was the first person to
+        walk on the Moon.</string>
+
+    <string name="question_corn">Corn is the most produced crop in the world.</string>
+
+    <string name="question_van_gog">Vincent van Gogh sold only one painting during his
+        lifetime.</string>
+
+    <string name="question_academy">The Academy Awards are annually the most-watched,
+        single telecast in the United States.</string>
+
+    <string name="question_russia">Russia has the largest area of any country in the world.</string>
+
+    <string name="question_mosquito">The mosquito has caused more human deaths
+        than any other creature in history.</string>
+
+    <string name="question_cage">Nicolas Cage changed his name inspired
+        by the Marvel Comics superhero Luke Cage.</string>
 </resources>

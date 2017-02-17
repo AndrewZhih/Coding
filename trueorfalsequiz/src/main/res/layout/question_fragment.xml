@@ -19,7 +19,7 @@
         android:gravity="center"
         android:typeface="serif"
         android:textSize="28sp"
-        android:text="@string/question_text" />
+        android:text="textView" />
     </LinearLayout>
 
 </LinearLayout>

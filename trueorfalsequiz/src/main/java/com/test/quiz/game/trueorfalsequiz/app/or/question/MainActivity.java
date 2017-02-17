@@ -23,6 +23,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,11 +56,53 @@ public class MainActivity extends AppCompatActivity {
     private int currentResult = 0;
     private int bestResult;
 
+    private ArrayList<Integer> loadedIndexes = new ArrayList<>();
+    private int randomIndex = 0;
+    Random random = new Random();
+
+    private int globalCounter = 0;
+
     MyTask myTask = new MyTask();
     //timer = new Timer();
 
+    private void sendIntent(){
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("BEST_RESULT", bestResult);
+        intent.putExtra("CURRENT_RESULT", currentResult);
+        startActivity(intent);
+    }
+
+    private int randomCurrentIndex(){
+        int counter = 1;
+        int index = 0;
+
+        while(counter <= mQuestionBank.length){
+            ++counter;
+            randomIndex = random.nextInt(mQuestionBank.length);
+            if(! loadedIndexes.contains(randomIndex)) {
+                loadedIndexes.add(randomIndex);
+                index = randomIndex;
+                break;
+            }else{
+                continue;
+            }
+        }
+        return index;
+    }
+
     private void updateQuestion() {
-        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        ++globalCounter;
+        countTextView.setText(getString(R.string.progress, globalCounter, mQuestionBank.length));
+        if(globalCounter == mQuestionBank.length){
+            myTask.cancel();
+            timer.cancel();
+            sendIntent();
+            finish();
+            return;
+        }
+        //mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        mCurrentIndex = randomCurrentIndex();
+        Log.d(LOG_TAG, "Random number is " + mCurrentIndex);
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
         progress = 1000;
@@ -69,11 +113,9 @@ public class MainActivity extends AppCompatActivity {
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         if (userPressedTrue == answerIsTrue) {
-            //myTask.cancel();
             soundPool.play(soundIdCorrect, 1, 1, 0, 0, 1);
             updateQuestion();
             currentResult++;
-            countTextView.setText(String.valueOf(currentResult));
         } else {
             if(currentResult >= bestResult) {
                 bestResult = currentResult;
@@ -82,14 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 editor.putInt(BEST_RESULT, bestResult);
                 editor.commit();
             }
-
-            Log.d(LOG_TAG, "myTask cancel in if/else");
             myTask.cancel();
             soundPool.play(soundIdWrong, 1, 1, 0, 0, 1);
-            Intent intent = new Intent(this, ResultActivity.class);
-            intent.putExtra("BEST_RESULT", bestResult);
-            intent.putExtra("CURRENT_RESULT", currentResult);
-            startActivity(intent);
+            sendIntent();
             finish();
         }
     }
@@ -148,6 +185,13 @@ public class MainActivity extends AppCompatActivity {
             new Question(R.string.question_octopus, false),
             new Question(R.string.question_moon, true),
             new Question(R.string.question_stars, true),
+            new Question(R.string.question_armstrong, true),
+            new Question(R.string.question_corn, true),
+            new Question(R.string.question_van_gog, true),
+            new Question(R.string.question_academy, false),
+            new Question(R.string.question_russia, true),
+            new Question(R.string.question_mosquito, true),
+            new Question(R.string.question_cage, true),
     };
 
 
@@ -158,11 +202,12 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences resultPrefs = this.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
         bestResult = resultPrefs.getInt(BEST_RESULT, 0);
-        Log.d(LOG_TAG, "Get best result " + bestResult);
-
+        //Log.d(LOG_TAG, "Get best result " + bestResult);
 
         mTrueButton  = (ImageButton) findViewById(R.id.true_button );
         mFalseButton = (ImageButton) findViewById(R.id.false_button);
+        mTrueButton.setEnabled(false);
+        mFalseButton.setEnabled(false);
 
         countTextView = (TextView)findViewById(R.id.countTextView);
 
@@ -173,16 +218,15 @@ public class MainActivity extends AppCompatActivity {
         soundIdCorrect = soundPool.load(this, R.raw.correct, 1);
         soundIdWrong = soundPool.load(this, R.raw.lose, 1);
 
-
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d(LOG_TAG, "RUN in HANDLER in onCreate");
-                //myTask = new MyTask();
+                mTrueButton.setEnabled(true);
+                mFalseButton.setEnabled(true);
                 timer.schedule(myTask, 100, 10);
             }
-        }, 900);
+        }, 800);
 
         QuestionFragment fragment = new QuestionFragment();
         android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -196,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         Fragment fragment1 = getFragmentManager().findFragmentById(R.id.fragment_container);
         mQuestionTextView = ((TextView)fragment1.getView().findViewById(R.id.question_text_view));
-
+        updateQuestion();
 
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                 checkAnswer(true);
             }
         });
-
 
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -233,15 +276,13 @@ public class MainActivity extends AppCompatActivity {
     private class MyTask extends TimerTask{
         @Override
         public void run() {
-            //Log.d(LOG_TAG, "RUN in MyTask class");
             --progress;
             if(progress >= 0){
                 progressBar.setProgress(progress);
                 if(progress == 0){
                     cancel();
                     soundPool.play(soundIdWrong, 1, 1, 0, 0, 1);
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-                    startActivity(intent);
+                    sendIntent();
                 }
             }
         }
